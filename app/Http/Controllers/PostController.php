@@ -19,8 +19,8 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-        return view('posts.show', compact('post'));
+        $post = Post::with('comments')->find($id);
+        return view('posts.show', compact(['post']));
     }
 
     public function probalica()
@@ -44,7 +44,10 @@ class PostController extends Controller
 
         // $post->save();
 
-        // return redirect('/posts');     
+        // return redirect('/posts'); 
+        
+        $this-> validate(request(), ['title'=> 'required', 'body'=> 'required']);
+        
         Post::create([
             'title'=> request('title'),
             'body'=> request('body'),

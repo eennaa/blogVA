@@ -14,6 +14,11 @@ class Post extends Model
         return self::where('published', 1)->get();
 
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
 
 
