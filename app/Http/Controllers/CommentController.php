@@ -11,11 +11,12 @@ class CommentController extends Controller
                
         $this-> validate(request(), ['author'=> 'required', 'text'=> 'required']);
         
-        Post::create([
+        Comment::create([
             'author'=> request('author'),
-            'text'=> request('text')
+            'text'=> request('text'),
+            'post_id'=> $post->id
             
         ]);
-        return redirect('/posts/$id');  
+        return redirect('/posts/'.$post->id);  
     }//
 }

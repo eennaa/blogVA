@@ -34,7 +34,7 @@ class PostController extends Controller
         return view ('posts.create');
     }
 
-    public function store()
+    public function store(Post $post)
     {
         // $post = new Post();        // moze i ovako ali postoji prostiji lepsi Laravel nacin
 
