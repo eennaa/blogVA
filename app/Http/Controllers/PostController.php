@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     public function index()
     {
         $posts = Post::all();
@@ -52,6 +57,7 @@ class PostController extends Controller
             'title'=> request('title'),
             'body'=> request('body'),
             'published'=> (bool) request('published'),
+            'user_id' => auth()->user()->id
         ]);
         return redirect('/posts');  
     }
