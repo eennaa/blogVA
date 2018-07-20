@@ -11,6 +11,12 @@
   </div>
 
   <div class="form-group">
+      <label for="age">Age</label>
+      <input name="age" type="number" class="form-control" id="age">
+      @include('partials.error-message', ['fieldName'=>'age'])
+  </div>
+
+  <div class="form-group">
       <label for="email">Email</label>
       <input name="email" type="email" class="form-control" id="email">
       @include('partials.error-message', ['fieldName'=>'email'])

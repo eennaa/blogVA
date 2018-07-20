@@ -5,8 +5,19 @@
 
 <div class="blog-post">
   <h2 class="blog-post-title">{{ $post->title }}</h2>
-
+  
   <p class="blog-post-meta">{{ $post->created_at}} </p>
+
+  @if(count($post->tags))
+       <ul class='list-unstyled'>
+           @foreach($post->tags as $tag)
+               <li class='btn btn-primary'>
+                   <a style='color: white;' href='/posts/tags/{{ $tag->name }}'>{{ $tag->name }}</a>
+               </li>
+           @endforeach
+       </ul>
+   @endif
+  
   <p> {{ $post->body }} </p>
   
 
@@ -27,12 +38,13 @@
   
 <br> <br>
 
+
 @foreach($post->comments as $comment)
   <div style="background-color:lightblue;">
     <h4>{{ $comment->author }}</h4>
     <p>{{ $comment->text }} </p>
   </div>
-  @endforeach
+@endforeach
 
 
 </div>

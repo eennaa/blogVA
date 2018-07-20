@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,  //// to koristim  da zabravim logovanom korisniku da dodje na rutu /register
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'age'=> \App\Http\Middleware\CheckAge::class
     ];
 }

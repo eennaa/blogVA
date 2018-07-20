@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Comment;   // mozda ovo i ne treba, sama sam dodala
 use App\Post;
+use App\Mail\CommentRecieved;
+use Illuminate\Support\Facades\Mail;   //// obrati paznju na ovo, moras sama da dodas
 
 class CommentController extends Controller
 {
@@ -35,6 +37,8 @@ class CommentController extends Controller
                 'text' => request('text'),
                 'post_id' => $post->id
             ]);
+
+            Mail::to($post->user)->send(new CommentRecieved($post));
 
             return redirect('/posts/'.$post->id);
         }

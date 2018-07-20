@@ -6,6 +6,7 @@
     Create post
   </a>
 @endif
+<br><br><br> <br>
   
 
 @foreach($posts as $post)
@@ -14,13 +15,15 @@
 
   <p class="blog-post-meta">{{ $post->created_at}} </p>
   <p> {{ $post->body }} </p> 
-  <p> author: {{ $post->user->name}}   </p>   
+  <p> <a href="{{ "/users/" . $post->user->id }}"> author: {{ $post->user->name}} </a></p>   
 </div>
 
+
+
 @if(auth()->check())
-  <a class="btn btn-primary" href="{{'/posts'}}">
-      Create comment
-  </a>
+  <a class="btn btn-primary" href="{{'/posts/' . $post->id}}">
+      Create comment 
+  </a><br><br><br>
 @else 
   <a class="btn btn-primary" href="{{'/login'}}">
       Create comment
