@@ -17,9 +17,17 @@
   <p> author: {{ $post->user->name}}   </p>   
 </div>
 
-<a class="btn btn-primary" href="{{'/posts'}}">
-    Create comment
-</a>
+@if(auth()->check())
+  <a class="btn btn-primary" href="{{'/posts'}}">
+      Create comment
+  </a>
+@else 
+  <a class="btn btn-primary" href="{{'/login'}}">
+      Create comment
+  </a>
+@endif
+
+
 @endforeach
 
 

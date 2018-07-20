@@ -37,7 +37,7 @@ Route::get('/posts/create', 'PostController@create');
 Route::get('/posts/{id}', 'PostController@show');
 Route::post('/posts', 'PostController@store');
 
-Route::post('/posts/{post}/comments','CommentsController@store')->name('comments-post');
+Route::post('/posts/{post}/comments','CommentController@store')->name('comments-post');
 
 Route::get('/register', 'RegisterController@create');
 Route::post('/register', 'RegisterController@store');
@@ -46,3 +46,4 @@ Route::get('/logout', 'LoginController@destroy');
 
 Route::get('/login', 'LoginController@create')->name('login');
 Route::post('/login', 'LoginController@store');
+
