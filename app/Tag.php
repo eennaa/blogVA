@@ -8,7 +8,7 @@ use App\Post;
 
 class Tag extends Model
 {
-    public function post ()
+    public function posts ()
     {
         return $this->belongsToMany(Post::class);
     }//

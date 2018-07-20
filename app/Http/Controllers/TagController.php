@@ -9,11 +9,10 @@ use App\Tag;
 
 class TagController extends Controller
 {
-    public function showPostsWithTag(Tag $tag)
+    public function showPostsWithTag($tag)
     {
-        Tag::whereName($tag)->get()->first();
-        $post = $tag->posts;
-
+        $tagModel = Tag::where('name',$tag)->first();
+        $posts = $tagModel->posts;
         return view('posts.index', compact('posts'));
     }
     //
