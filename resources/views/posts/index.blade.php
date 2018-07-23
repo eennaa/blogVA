@@ -33,7 +33,23 @@
 
 @endforeach
 
+ <br> <br> <br> <br>
 
+<nav class="blog-pagination">
+  <a class="btn btn-outline-{{ $posts->currentPage() == 1
+      ? 'secondary disabled' : 'primary'}}"
+      href="{{ $posts->previousPageUrl() }}">
+        Previous
+  </a>
+  <a class="btn btn-outline-{{ $posts->hasMorePages() 
+      ? 'primary'
+      : 'secondary disabled'
+      }}"
+      href="{{ $posts->nextPageUrl() }}">
+        Next
+  </a>
+  Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}
+</nav>
   
 
 @endsection
